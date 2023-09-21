@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{0B78F63D-A794-4A08-9B4D-A3BAE1C8EAA0}"
+	ProjectSection(SolutionItems) = preProject
+		Entity Framework.docx = Entity Framework.docx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{BA8E495B-1661-4233-9934-EDD8EF12EBDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Section7", "Section7", "{69F60E49-893B-42E4-9DFF-5B134084EFEE}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Section 7\1 Book - ManageAuthors - View.txt = Assets\Section 7\1 Book - ManageAuthors - View.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Section5", "Section5", "{E6B4A692-0EE6-460D-9C20-F4560A8A70C3}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Section 5\1 Category - Index - View.txt = Assets\Section 5\1 Category - Index - View.txt
+		Assets\Section 5\2 Category - Upsert - View.txt = Assets\Section 5\2 Category - Upsert - View.txt
+		Assets\Section 5\3 Author - Index - View.txt = Assets\Section 5\3 Author - Index - View.txt
+		Assets\Section 5\4 Author - Upsert - View.txt = Assets\Section 5\4 Author - Upsert - View.txt
+		Assets\Section 5\5 Publisher - Index - View.txt = Assets\Section 5\5 Publisher - Index - View.txt
+		Assets\Section 5\6 Publisher - Upsert - View.txt = Assets\Section 5\6 Publisher - Upsert - View.txt
+		Assets\Section 5\7 Book - Index - View.txt = Assets\Section 5\7 Book - Index - View.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Section6", "Section6", "{8C4B73FA-DAAF-4862-BD55-0C959DB72B72}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Section 6\1 Book - Upsert - View.txt = Assets\Section 6\1 Book - Upsert - View.txt
+		Assets\Section 6\2 Book - Details - View.txt = Assets\Section 6\2 Book - Details - View.txt
+		Assets\Section 6\4 Deffered Execution Examples.txt = Assets\Section 6\4 Deffered Execution Examples.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Section8", "Section8", "{1F3E1C6D-6202-4A48-B350-95EDC2139514}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Section 8\1. View and Sproc.txt = Assets\Section 8\1. View and Sproc.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingWiki_Web", "CodingWiki_Web\CodingWiki_Web.csproj", "{479EB107-6CA4-44F2-9959-BA844C217267}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{479EB107-6CA4-44F2-9959-BA844C217267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479EB107-6CA4-44F2-9959-BA844C217267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479EB107-6CA4-44F2-9959-BA844C217267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479EB107-6CA4-44F2-9959-BA844C217267}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69F60E49-893B-42E4-9DFF-5B134084EFEE} = {BA8E495B-1661-4233-9934-EDD8EF12EBDC}
+		{E6B4A692-0EE6-460D-9C20-F4560A8A70C3} = {BA8E495B-1661-4233-9934-EDD8EF12EBDC}
+		{8C4B73FA-DAAF-4862-BD55-0C959DB72B72} = {BA8E495B-1661-4233-9934-EDD8EF12EBDC}
+		{1F3E1C6D-6202-4A48-B350-95EDC2139514} = {BA8E495B-1661-4233-9934-EDD8EF12EBDC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {263DEA4E-2BE9-40F8-BEAF-1AAD1D8078CA}
+	EndGlobalSection
+EndGlobal
