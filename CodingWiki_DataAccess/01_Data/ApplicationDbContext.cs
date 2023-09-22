@@ -16,6 +16,10 @@ namespace CodingWiki_DataAccess.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True");
