@@ -26,7 +26,7 @@ namespace CodingWiki_Model.Models
         //public ICollection<Book> Books { get; set; }//navegation property
 
         /* MANY TO MANY ***************************** creating BookAuthor table*/
-        public virtual ICollection<BookAuthor> BooksAuthor { get; }
+        public ICollection<BookAuthor> BooksAuthor { get; }
 
     }
 }
