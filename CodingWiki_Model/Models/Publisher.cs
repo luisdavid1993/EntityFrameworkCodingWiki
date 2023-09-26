@@ -16,5 +16,7 @@ namespace CodingWiki_Model.Models
         [Required]
         public string Name { get; set; }
         public string Location { get; set; }
+        // List of Books from One Publisher
+        public ICollection<Book> Books { get; set; }
     }
 }

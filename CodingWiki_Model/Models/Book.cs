@@ -16,12 +16,13 @@ namespace CodingWiki_Model.Models
     /// </summary>
     public class Book
     {
-        public Book(int bookId, string title, string iSBN, decimal price)
+        public Book(int bookId, string title, string iSBN, decimal price, int publisher_Id)
         {
             BookId = bookId;
             Title = title;
             ISBN = iSBN;
             Price = price;
+            Publisher_Id = publisher_Id;
         }
         public Book() { }   
 
@@ -34,6 +35,28 @@ namespace CodingWiki_Model.Models
         public decimal Price { get; set; }
         [NotMapped]
         public string PriceRange { get; set; }
-        public BookDetail BookDetail { get; set; }
+
+        /* ONE TO ONE ***************************** BooK property in BookDetail */
+        public BookDetail BookDetail { get; set; } //navegation property
+
+
+
+        /* ONE TO MANY *****************************  ICollection<Book> Books in  Publisher*/
+        //This is the foreing key property
+        // And Publisher (property name) is the tablerelationship whit the foreing key
+        [ForeignKey("Publisher")]
+        public int Publisher_Id { get; set; }
+        public Publisher Publisher { get; set; } //navegation property
+
+
+
+        /* MANY TO MANY *****************************  ICollection<Book> Books in  Author AUTOMATIC*/
+
+        //Books can have multiples Authors 
+        //public ICollection<Author> Authors { get; set; }//navegation property
+
+        /* MANY TO MANY ***************************** creating BookAuthor table*/
+        public virtual ICollection<BookAuthor> BooksAuthor { get;}
+
     }
 }

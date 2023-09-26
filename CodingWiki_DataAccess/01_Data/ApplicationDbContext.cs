@@ -28,16 +28,19 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Fluent Api
             modelBuilder.Entity<Book>().Property(u => u.Price).HasPrecision(20, 2); //decimal(20,2)
-            modelBuilder.Entity<Book>().HasData
-                (
-                new Book(1, "Luis David", "LD", 500),
-                new Book(2, "Mariangelis", "LD", 870)
-                );
+            modelBuilder.Entity<BookAuthor>().HasKey(u => new { u.BookId, u.AuthorId });
 
-            Book[] books = new Book[] { new Book(3, "Pro C#", "JR Martin", 7562), new Book(4,"Clean Code", "Dr jr", 870) };
 
+            //Seed Data
+            modelBuilder.Entity<Book>().HasData(new Book(1, "Luis David", "LD", 500,1),new Book(2, "Mariangelis", "LD", 870,1));
+            Book[] books = new Book[] { new Book(3, "Pro C#", "JR Martin", 7562,1), new Book(4,"Clean Code", "Dr jr", 870, 1) };
             modelBuilder.Entity<Book>().HasData(books);
+            modelBuilder.Entity<Publisher>().HasData(new Publisher() { Publisher_Id=1, Name ="Rober J Martin", Location = "USA"});
+
+
+           
         }
     }
 }
