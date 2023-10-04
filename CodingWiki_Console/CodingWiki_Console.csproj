@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CodingWiki_DataAccess\CodingWiki_DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

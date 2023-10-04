@@ -2,6 +2,7 @@
 using CodingWiki_Model.Models;
 using CodingWiki_Model.Models.FluentModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,8 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True");
+            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True")
+                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,8 +90,6 @@ namespace CodingWiki_DataAccess.Data
                 .HasForeignKey(u => u.BookId);
             modelBuilder.Entity<Fluent_BookAuthor>().HasOne(u => u.Fluent_Author).WithMany(u => u.Fluent_BookAuthor)
                .HasForeignKey(u => u.AuthorId);
-
-
 
             //---------------- Fluent Api Ended ---------------//
 
