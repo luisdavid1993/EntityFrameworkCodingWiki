@@ -14,9 +14,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CodingWiki_DataAccess\CodingWiki_DataAccess.csproj" />
     <ProjectReference Include="..\CodingWiki_Model\CodingWiki_Model.csproj" />
   </ItemGroup>
 

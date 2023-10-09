@@ -13,6 +13,9 @@ namespace CodingWiki_DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        { 
+        }
 
         //This create tables 
         //IF you remove some of these properties and make a migration it is going to delete the table 
@@ -32,8 +35,8 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True")
-                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
+          //  options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True")
+          //      .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

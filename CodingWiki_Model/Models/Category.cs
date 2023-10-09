@@ -16,7 +16,7 @@ namespace CodingWiki_Model.Models
         [Column("Name")]
         [MaxLength(50)]
         [Required]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
         
     }
 }

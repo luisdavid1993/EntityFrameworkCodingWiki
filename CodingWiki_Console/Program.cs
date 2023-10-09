@@ -6,6 +6,12 @@ using System.Runtime.CompilerServices;
 
 internal class Program
 {
+    /// <summary>
+    /// This in comment because ApplicationDbContext need parameters when we work with WEB APP
+    /// To this work Uncomment OnConfiguring section in ApplicationDbContext
+    /// Comment the constructor
+    /// </summary>
+    /// <param name="args"></param>
     private static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
@@ -47,113 +53,113 @@ internal class Program
         #endregion
 
         //  UpdateBook(1, new Book() { Title = "Martinez", Price = 100 });
-        DeletBook(9);
+        //DeletBook(9);
     }
 
-    private static List<Book> GetAllBooks()
-    {
-        List<Book> books = new List<Book>();
-        using (ApplicationDbContext context = new ApplicationDbContext())
-        {
-            books = context.Books.ToList();
-        }
+    //private static List<Book> GetAllBooks()
+    //{
+    //    List<Book> books = new List<Book>();
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //    {
+    //        books = context.Books.ToList();
+    //    }
 
-        return books;
-    }
+    //    return books;
+    //}
 
-    /// <summary>
-    /// If I pass information or text direct in where condition
-    /// Where(x=> x.Title == "Test")
-    /// Ef Pass the text to database, that is bad because of Database injection
-    /// ALWAYS USE VARIABLE 
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    private static Book GetBookByTitle(string title)
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-            return context.Books.FirstOrDefault(u => u.Title == title);
-    }
+    ///// <summary>
+    ///// If I pass information or text direct in where condition
+    ///// Where(x=> x.Title == "Test")
+    ///// Ef Pass the text to database, that is bad because of Database injection
+    ///// ALWAYS USE VARIABLE 
+    ///// </summary>
+    ///// <param name="id"></param>
+    ///// <returns></returns>
+    //private static Book GetBookByTitle(string title)
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //        return context.Books.FirstOrDefault(u => u.Title == title);
+    //}
 
-    /// <summary>
-    ///  .Find only work on Primary Key
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    private static Book GetBookById(int id = 1)
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-            return context.Books.Find(id);
-    }
-    private static void AddBook()
-    {
+    ///// <summary>
+    /////  .Find only work on Primary Key
+    ///// </summary>
+    ///// <param name="id"></param>
+    ///// <returns></returns>
+    //private static Book GetBookById(int id = 1)
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //        return context.Books.Find(id);
+    //}
+    //private static void AddBook()
+    //{
 
-        using (ApplicationDbContext context = new ApplicationDbContext())
-        {
-            Book book = new Book()
-            {
-                Title = "Crack code interview",
-                Price = 570.5m,
-                ISBN = "code interview",
-                Publisher_Id = 1
-            };
-            context.Add(book);
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //    {
+    //        Book book = new Book()
+    //        {
+    //            Title = "Crack code interview",
+    //            Price = 570.5m,
+    //            ISBN = "code interview",
+    //            Publisher_Id = 1
+    //        };
+    //        context.Add(book);
 
-            Book book2 = new Book()
-            {
-                Title = "Amazon interview",
-                Price = 570.5m,
-                ISBN = "Amazon interview",
-                Publisher_Id = 1
-            };
-            context.Add(book2);
-           context.SaveChanges();
-        }
-    }
+    //        Book book2 = new Book()
+    //        {
+    //            Title = "Amazon interview",
+    //            Price = 570.5m,
+    //            ISBN = "Amazon interview",
+    //            Publisher_Id = 1
+    //        };
+    //        context.Add(book2);
+    //       context.SaveChanges();
+    //    }
+    //}
 
-    private static List<Book> BookTitleContains(string prefix)
-    {
-        //Normal Like way "%prefix%"
-        //using (ApplicationDbContext context = new ApplicationDbContext())
-        //    return context.Books.Where(u => u.Title.Contains(prefix)).ToList();
+    //private static List<Book> BookTitleContains(string prefix)
+    //{
+    //    //Normal Like way "%prefix%"
+    //    //using (ApplicationDbContext context = new ApplicationDbContext())
+    //    //    return context.Books.Where(u => u.Title.Contains(prefix)).ToList();
 
-        using (ApplicationDbContext context = new ApplicationDbContext())
-            return context.Books.Where(u => EF.Functions.Like(u.Title, $"{prefix}%")).ToList();
-    }
-    private static int BooksCount()
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-            return context.Books.Count();
-    }
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //        return context.Books.Where(u => EF.Functions.Like(u.Title, $"{prefix}%")).ToList();
+    //}
+    //private static int BooksCount()
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //        return context.Books.Count();
+    //}
 
-    private static List<Book> Pagination(int take = 2, int skip = 0)
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-            return context.Books.Skip(skip).Take(take).ToList();
-    }
+    //private static List<Book> Pagination(int take = 2, int skip = 0)
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //        return context.Books.Skip(skip).Take(take).ToList();
+    //}
 
-    private static void UpdateBook(int id, Book book)
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-        {
-            Book temp = context.Books.Find(id);
-            temp.Title = book.Title;
-            temp.Price = book.Price;
-            context.SaveChanges();
-        }
-          
-    }
+    //private static void UpdateBook(int id, Book book)
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //    {
+    //        Book temp = context.Books.Find(id);
+    //        temp.Title = book.Title;
+    //        temp.Price = book.Price;
+    //        context.SaveChanges();
+    //    }
 
-    private static void DeletBook(int id)
-    {
-        using (ApplicationDbContext context = new ApplicationDbContext())
-        {
-            Book temp = context.Books.Find(id);
-            context.Books.Remove(temp);
-            context.SaveChanges();
-        }
+    //}
 
-    }
+    //private static void DeletBook(int id)
+    //{
+    //    using (ApplicationDbContext context = new ApplicationDbContext())
+    //    {
+    //        Book temp = context.Books.Find(id);
+    //        context.Books.Remove(temp);
+    //        context.SaveChanges();
+    //    }
+
+    //}
 
 }
 

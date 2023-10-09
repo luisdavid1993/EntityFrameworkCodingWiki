@@ -21,7 +21,7 @@ namespace CodingWiki_Model.Models
         public DateTime BirthDate { get; set; }
         public string Location { get; set; }
         [NotMapped]
-        public string FullName { get { return FirstName + LastName; } }
+        public string FullName { get { return FirstName + " " + LastName; } }
         //Author can have many Books
         //public ICollection<Book> Books { get; set; }//navegation property
 
