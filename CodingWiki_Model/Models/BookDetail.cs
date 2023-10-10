@@ -20,6 +20,6 @@ namespace CodingWiki_Model.Models
         // And Book (property name) is the tablerelationship whit the foreing key
         [ForeignKey("Book")]
         public int BookId { get; set; }
-        public Book Book { get; set; }
+        public virtual Book Book { get; set; }
     }
 }

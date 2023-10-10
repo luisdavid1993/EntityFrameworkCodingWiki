@@ -37,7 +37,7 @@ namespace CodingWiki_Model.Models
         public string PriceRange { get; set; }
 
         /* ONE TO ONE ***************************** BooK property in BookDetail */
-        public BookDetail BookDetail { get; set; } //navegation property
+        public virtual BookDetail BookDetail { get; set; } //navegation property
 
 
 
@@ -46,7 +46,7 @@ namespace CodingWiki_Model.Models
         // And Publisher (property name) is the tablerelationship whit the foreing key
         [ForeignKey("Publisher")]
         public int Publisher_Id { get; set; }
-        public Publisher Publisher { get; set; } //navegation property
+        public virtual Publisher Publisher { get; set; } //navegation property
 
 
 
@@ -56,7 +56,7 @@ namespace CodingWiki_Model.Models
         //public ICollection<Author> Authors { get; set; }//navegation property
 
         /* MANY TO MANY ***************************** creating BookAuthor table*/
-        public ICollection<BookAuthor> BooksAuthor { get;}
+        public virtual ICollection<BookAuthor> BooksAuthor { get;}
 
     }
 }

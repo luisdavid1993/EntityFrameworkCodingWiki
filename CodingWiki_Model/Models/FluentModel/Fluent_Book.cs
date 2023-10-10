@@ -21,10 +21,10 @@ namespace CodingWiki_Model.Models
         public string ISBN { get; set; }
         public decimal Price { get; set; }
         public string PriceRange { get; set; }
-        public Fluent_BookDetail Fluent_BookDetail { get; set; } //navegation property
+        public virtual Fluent_BookDetail Fluent_BookDetail { get; set; } //navegation property
         public int Publisher_Id { get; set; }
-        public Fluent_Publisher Fluent_Publisher { get; set; } //navegation property
-        public ICollection<Fluent_BookAuthor> Fluent_BookAuthor { get; }
+        public virtual Fluent_Publisher Fluent_Publisher { get; set; } //navegation property
+        public virtual ICollection<Fluent_BookAuthor> Fluent_BookAuthor { get; }
 
 
     }

@@ -15,6 +15,6 @@ namespace CodingWiki_Model.Models
         public int NumberOfPages { get; set; }
         public string Weight { get; set; }
         public int BookId { get; set; }
-        public Fluent_Book Fluent_Book { get; set; }
+        public virtual Fluent_Book Fluent_Book { get; set; }
     }
 }

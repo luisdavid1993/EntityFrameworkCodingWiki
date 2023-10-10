@@ -13,7 +13,7 @@ namespace CodingWiki_Model.Models
         public int BookId { get; set; }
 
         public int AuthorId { get; set; }
-        public Fluent_Book Fluent_Book { get; set; }
-        public Fluent_Author Fluent_Author { get; set; }
+        public virtual Fluent_Book Fluent_Book { get; set; }
+        public virtual Fluent_Author Fluent_Author { get; set; }
     }
 }

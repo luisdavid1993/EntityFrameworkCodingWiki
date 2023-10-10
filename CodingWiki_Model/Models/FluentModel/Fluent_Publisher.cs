@@ -13,6 +13,6 @@ namespace CodingWiki_Model.Models
         public int Publisher_Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
-        public ICollection<Fluent_Book> Fluent_Book { get; set; }
+        public virtual ICollection<Fluent_Book> Fluent_Book { get; set; }
     }
 }

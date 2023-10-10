@@ -15,6 +15,6 @@ namespace CodingWiki_Model.Models.FluentModel
         public DateTime BirthDate { get; set; }
         public string Location { get; set; }
         public string FullName { get { return FirstName + LastName; } }
-        public ICollection<Fluent_BookAuthor> Fluent_BookAuthor { get; }
+        public virtual ICollection<Fluent_BookAuthor> Fluent_BookAuthor { get; }
     }
 }
