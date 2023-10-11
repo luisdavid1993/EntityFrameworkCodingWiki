@@ -18,7 +18,7 @@ namespace CodingWiki_Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Category> categories = _context.Categories.ToList();
+            IEnumerable<Category> categories = _context.Categories.AsNoTracking().ToList(); //Adding AsNotTracking command, you cannot see _context Tracking in database
             return View(categories);
         }
 

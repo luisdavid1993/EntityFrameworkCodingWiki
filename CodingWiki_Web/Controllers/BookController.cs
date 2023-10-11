@@ -165,6 +165,19 @@ namespace CodingWiki_Web.Controllers
         }
         public IActionResult PlayGround()
         {
+            // calling a view
+            List<BookView> bookViews= _context.BookViews.ToList();
+
+            // executing sql raw
+            var booksRaw = _context.Books.FromSqlRaw("select * from Books").ToList(); // it only work with select *
+
+            // executing sql interpolated (this is with parameters) you have to use variable in where condition
+            int id = 1;
+            var booksRaw1 = _context.Books.FromSqlInterpolated($"select * from Books where Bookid = {id}").ToList(); // it only work with select *
+
+            //calling a store procedure
+            var storeProcedure = _context.Books.FromSqlInterpolated($"exec getAllBookDetails {id}").ToList();
+
             var bookdetail = _context.BookDetails.Include(_u => _u.Book).FirstOrDefault();
             bookdetail.NumberOfChapters = 222;
             bookdetail.Book.Price = 2222;
@@ -175,7 +188,7 @@ namespace CodingWiki_Web.Controllers
             var bookdetail2 = _context.BookDetails.Include(_u => _u.Book).FirstOrDefault();
             bookdetail2.NumberOfChapters = 111;
             bookdetail2.Book.Price = 1111;
-            _context.BookDetails.Attach(bookdetail2);
+            _context.BookDetails.Attach(bookdetail2); // just update properties changed 
             _context.SaveChanges();
 
             //var bookTemp = _context.Books.FirstOrDefault();

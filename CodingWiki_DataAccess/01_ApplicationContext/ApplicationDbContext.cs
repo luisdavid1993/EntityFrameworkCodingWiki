@@ -1,11 +1,13 @@
 ﻿using CodingWiki_DataAccess._02_FluentConfig;
 using CodingWiki_Model.Models;
 using CodingWiki_Model.Models.FluentModel;
+using CodingWiki_Model.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +16,14 @@ namespace CodingWiki_DataAccess.Data
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        { 
+        {
         }
 
         //This create tables 
         //IF you remove some of these properties and make a migration it is going to delete the table 
         public DbSet<Book> Books { get; set; }
+        public DbSet<BookView> BookViews { get; set; }
+
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Author> Authors { get; set; }
@@ -36,8 +40,8 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-          //  options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True")
-          //      .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
+            //  options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeWiki;Integrated Security=True;TrustServerCertificate=True;Trusted_Connection = True")
+            //      .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,9 +92,9 @@ namespace CodingWiki_DataAccess.Data
 
 
             modelBuilder.Entity<Fluent_BookAuthor>().ToTable("Fluent_BookAuthor"); // Table name in dabase
-            modelBuilder.Entity<Fluent_BookAuthor>().HasKey(u => new { u.BookId, u.AuthorId}); // Primary key
+            modelBuilder.Entity<Fluent_BookAuthor>().HasKey(u => new { u.BookId, u.AuthorId }); // Primary key
             //Relation MANY to MANY -------------------------------------
-            modelBuilder.Entity<Fluent_BookAuthor>().HasOne(u=> u.Fluent_Book).WithMany(u=> u.Fluent_BookAuthor)
+            modelBuilder.Entity<Fluent_BookAuthor>().HasOne(u => u.Fluent_Book).WithMany(u => u.Fluent_BookAuthor)
                 .HasForeignKey(u => u.BookId);
             modelBuilder.Entity<Fluent_BookAuthor>().HasOne(u => u.Fluent_Author).WithMany(u => u.Fluent_BookAuthor)
                .HasForeignKey(u => u.AuthorId);
@@ -100,10 +104,12 @@ namespace CodingWiki_DataAccess.Data
 
 
             //---------------- Seed Data Start ---------------//
-            modelBuilder.Entity<Book>().HasData(new Book(1, "Luis David", "LD", 500,1),new Book(2, "Mariangelis", "LD", 870,1));
-            Book[] books = new Book[] { new Book(3, "Pro C#", "JR Martin", 7562,1), new Book(4,"Clean Code", "Dr jr", 870, 1) };
+            modelBuilder.Entity<Book>().HasData(new Book(1, "Luis David", "LD", 500, 1), new Book(2, "Mariangelis", "LD", 870, 1));
+            Book[] books = new Book[] { new Book(3, "Pro C#", "JR Martin", 7562, 1), new Book(4, "Clean Code", "Dr jr", 870, 1) };
             modelBuilder.Entity<Book>().HasData(books);
-            modelBuilder.Entity<Publisher>().HasData(new Publisher() { Publisher_Id=1, Name ="Rober J Martin", Location = "USA"});
+            modelBuilder.Entity<Publisher>().HasData(new Publisher() { Publisher_Id = 1, Name = "Rober J Martin", Location = "USA" });
+
+            modelBuilder.Entity<BookView>().HasNoKey().ToView("GetOnlyBookDetails"); // for not create a table in database
 
             //---------------- Seed Data Ended ---------------//
 
